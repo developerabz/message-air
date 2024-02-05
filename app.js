@@ -18,13 +18,18 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   console.log("post request")
   data.message.push(req.body.message)
-  // console.log(res)
-  res.sendFile(path.join(__dirname, '/index.html'))
-
+  console.log(data)
+  res.json({ message: "success" })
+  return
 })
 
 app.get('/posts', (req, res) => {
   res.json(data.message)
+  return
+})
+
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(path.join(__dirname, '/favicon.ico'))
   return
 })
 
