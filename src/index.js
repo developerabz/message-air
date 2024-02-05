@@ -38,9 +38,10 @@ const updateMessageContainer = () => {
           console.log(r)
           messageContainer.replaceChildren()
           for (const item of r) {
-            const li = document.createElement('li')
-            li.textContent = item
-            messageContainer.append(li)
+            const p = document.createElement('p')
+            p.textContent = item
+            p.className = 'p-2 m-1 bg-green-50 w-min'
+            messageContainer.append(p)
           }
         })
     })

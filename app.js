@@ -5,13 +5,13 @@ import { getData, setData } from "./db.js"
 // Backend
 const app = express()
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-app.use(express.static('.'))
+app.use(express.static('src'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 const data = getData();
-
+console.log(__dirname)
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/index.html'))
+  res.sendFile(path.join(__dirname, '/src/index.html'))
   return
 })
 

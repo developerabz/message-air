@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Message Air</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="./tailwind.css" rel="stylesheet">
+    <script src="index.js" defer></script>
+  </head>
+  <body class="flex p-5 items-center flex-col bg-sky-50 min-h-screen">
+    <h1>Messager</h1>
+    <main class="bg-red-50 h-96 p-1 md:w-full flex flex-col">
+      <section class="message-container overflow-auto">
+        
+      </section>
+      <form class="flex mt-auto gap-1 items-center">
+        <div class="flex-1">
+          <input class="w-full" type="text" name="message" placeholder="Type a message">
+        </div>
+        <button type="submit" class="bg-blue-200 rounded-xl hover:bg-blue-400 hover:text-white p-1" >Submit</button>
+      </form>  
+    </main> 
+  </body>
+</html>
