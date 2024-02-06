@@ -3,7 +3,6 @@
 
 
 const form = document.querySelector('form')
-console.log(form)
 
 const messageContainer = document.querySelector('.message-container')
 form.addEventListener('submit', (e) => {
