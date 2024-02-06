@@ -28,9 +28,4 @@ app.get('/posts', (req, res) => {
   return
 })
 
-app.get('/favicon.ico', (req, res) => {
-  res.sendFile(path.join(__dirname, '/favicon.ico'))
-  return
-})
-
 app.listen(3000)

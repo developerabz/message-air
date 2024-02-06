@@ -50,3 +50,22 @@ const updateMessageContainer = () => {
     })
 
 }
+
+const menuIcon = document.querySelector('.menu-icon')
+const usersNav = document.querySelector('.users-nav')
+
+menuIcon.addEventListener('click', () => {
+  const bar1 = menuIcon.querySelector('.bar-1')
+  const bar2 = menuIcon.querySelector('.bar-2')
+  const bar3 = menuIcon.querySelector('.bar-3')
+  bar2.classList.toggle("opacity-0")
+  bar1.classList.toggle("translate-y-2")
+  bar3.classList.toggle("-translate-y-2")
+  bar1.classList.toggle("rotate-45")
+  bar3.classList.toggle("-rotate-45")
+  usersNav.classList.toggle("hidden")
+  usersNav.classList.toggle("flex")
+})
+
+
+

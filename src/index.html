@@ -7,9 +7,25 @@
     <link type="text/css" href="./tailwind.css" rel="stylesheet">
     <script src="index.js" defer></script>
   </head>
-  <body class="flex p-5 items-center flex-col bg-sky-50 min-h-screen">
-    <h1>Messager</h1>
-    <main class="bg-red-50 h-96 p-1 md:w-full flex flex-col">
+  <body class="flex p-5 items-center flex-col bg-black text-white min-h-screen">
+    <header class="flex justify-between w-full p-1 items-center">
+      <div class="menu-icon w-8 flex flex-col gap-1">
+        <div class="bar-1 h-1 bg-white transition-transform"></div>
+        <div class="bar-2 h-1 bg-white transition-opacity"></div> 
+        <div class="bar-3 h-1 bg-white transition-transform"></div>
+      </div>
+      <h1>MESSAGER</h1>
+
+     <div class="profile-icon w-10">
+       <img src="/images/profile-icon.jpg" alt="profile icon" class="rounded-full" > 
+      </div>
+      
+    </header>
+    <main class="bg-red-50 h-96 p-1 md:w-full flex flex-col text-black">
+      <section class="users-nav hidden bg-red-500 gap-1">
+        <div>Jared</div>
+        <div>Bob</div>
+      </section>
       <section class="message-container overflow-auto">
         
       </section>
