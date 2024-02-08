@@ -1,1 +1,7 @@
 /node_modules
+
+db.js
+app.js
+/backend/*.js
+/src/*.js
+
