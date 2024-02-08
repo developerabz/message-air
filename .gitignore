@@ -2,6 +2,7 @@
 
 db.js
 app.js
+/backend-test/*.js
 /backend/*.js
 /src/*.js
 
