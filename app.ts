@@ -3,6 +3,7 @@ import express from "express"
 import path from "path"
 import { fileURLToPath } from "url"
 import db from "./db.js"
+import { createChat, getChat } from "./backend/chat.js"
 // Backend
 const app = express()
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -16,10 +17,14 @@ app.get('/', (req, res) => {
 })
 // TODO: add call functions that provide a response
 app.post('/chat/create', (req, res) => {
+  createChat(req.body.users)
+  res.json({ message: "success" })
   return
 })
 
 app.get('/chat/chatname', (req, res) => {
+  getChat(req.body.users)
+  res.json({ message: "success" })
   return
 })
 
