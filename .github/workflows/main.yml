@@ -28,7 +28,7 @@ jobs:
         run: |
           rm -f messager.sqlite
           touch messager.sqlite
-          sqlite3 messager.sqlite3 < createMessager.sql
+          sqlite3 messager.sqlite < createMessager.sql
 
       - name: Debug sql
         run: cat createMessager.sql
