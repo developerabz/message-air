@@ -12,19 +12,16 @@ jobs:
     strategy:
       matrix:
         node-version: [21.x]
-        sqlite3-version: [3.x]
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Use Node ${{ matrix.node-version }}
-        uses: actions/setup-node
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Use sqlite3 ${{ matrix.sqlite3-version }}
-        uses: actions/setup-sqlite3
-        with:
-          sqlite3-version: ${{ sqlite3-version }}
-      
       - name: Setup db
         run:
           rm messager.sqlite
