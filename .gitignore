@@ -6,3 +6,5 @@ app.js
 /backend/*.js
 /src/*.js
 messager.sqlite*
+
+/actions-runner
