@@ -4,6 +4,9 @@ module.exports = {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
-  modulePathIgnorePatterns: ["actions-runner"]
+  roots: [
+    "./backend-tests/",
+    "./actions-runner/_work/message-air/message-air/backend-tests/"
+  ]
 };
 
