@@ -6,7 +6,6 @@ module.exports = {
   },
   roots: [
     "./backend-tests/",
-    "./actions-runner/_work/message-air/message-air/backend-tests/"
   ]
 };
 
