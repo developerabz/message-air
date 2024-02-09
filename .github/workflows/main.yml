@@ -1,0 +1,42 @@
+name: Node CI/CD pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    name: test
+    runs-on: arch-latest
+
+    strategy:
+      matrix:
+        node-version: [21.x]
+        sqlite3-version: [3.x]
+
+    steps:
+      - name: Use Node ${{ matrix.node-version }}
+        uses: actions/setup-node
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Use sqlite3 ${{ matrix.sqlite3-version }}
+        uses: actions/setup-sqlite3
+        with:
+          sqlite3-version: ${{ sqlite3-version }}
+      
+      - name: Setup db
+        run:
+          rm messager.sqlite
+          touch messager.sqlite
+          sqlite3 messager.sqlite3 < createMessager.sql
+      
+      - name: Setup and install npm
+        run:
+          npm install
+          npx tsc
+          npm test
+
+      - name: Clean db
+        run:
+          rm messager.sqlite
