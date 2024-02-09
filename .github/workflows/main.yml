@@ -25,17 +25,17 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Setup db
-        run:
+        run: |
           rm messager.sqlite
           touch messager.sqlite
           sqlite3 messager.sqlite3 < createMessager.sql
       
       - name: Setup and install npm
-        run:
+        run: |
           npm install
           npx tsc
           npm test
 
       - name: Clean db
-        run:
+        run: |
           rm messager.sqlite
