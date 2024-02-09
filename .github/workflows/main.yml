@@ -26,7 +26,7 @@ jobs:
 
       - name: Setup db
         run: |
-          rm messager.sqlite
+          rm -f messager.sqlite
           touch messager.sqlite
           sqlite3 messager.sqlite3 < createMessager.sql
       
