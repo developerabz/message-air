@@ -2,20 +2,59 @@
 import express from "express"
 import path from "path"
 import { fileURLToPath } from "url"
-import db from "./db.js"
 import { createChat, getChat } from "./backend/chat.js"
+import { createUser } from "./backend/user.js"
 // Backend
 const app = express()
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-app.use(express.static('src'))
+//app.use(express.static('src'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 console.log(__dirname)
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/src/index.html'))
+  res.sendFile(path.join(__dirname, '/src/signup.html'))
   return
 })
-// TODO: add call functions that provide a response
+
+app.get('/tailwind.css', (req, res) => {
+  res.sendFile(path.join(__dirname, '/src/tailwind.css'))
+  return
+})
+
+app.get('/index.js', (req, res) => {
+  res.sendFile(path.join(__dirname, '/src/index.js'))
+  return
+})
+
+app.get('/signup.js', (req, res) => {
+  res.sendFile(path.join(__dirname, '/src/signup.js'))
+  return
+})
+app.get('/images/profile-icon.jpg', (req, res) => {
+  res.sendFile(path.join(__dirname, '/src/images/profile-icon.jpg'))
+  return
+})
+
+app.get('/images/favicon.ico', (req, res) => {
+  res.sendFile(path.join(__dirname, '/src/images/favicon.ico'))
+  return
+})
+
+
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, 'src/index.html'))
+  return
+})
+
+app.post('/user/create', (req, res) => {
+  console.log(req.body)
+  const { email, name, username, password } = req.body;
+  const user = createUser(username, name, email, password);
+  console.log(user)
+  res.json({ message: "success" })
+  // createUser()
+  return
+})
 app.post('/chat/create', (req, res) => {
   createChat(req.body.users)
   res.json({ message: "success" })

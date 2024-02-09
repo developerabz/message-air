@@ -38,7 +38,7 @@ const verifyPassword = (password: string, salt: string, hash: string) => {
 }
 
 const getUser = (username: string): User => {
-  const stmt = db.prepare(`SELECT * FROM User WHERE username = @username;`);
+  const stmt = db.prepare(`SELECT * FROM User WHERE username = ?;`);
   return stmt.get(username) as User
 
 }

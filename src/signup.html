@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Message Air</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="../tailwind.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico"> 
+    <script type="module" src="signup.js" defer></script>
+  </head>
+  <body class="flex p-5 items-center flex-col bg-black text-white min-h-screen">
+    <header class="flex justify-between w-full p-1 items-center">
+      <div class="menu-icon w-8 flex flex-col gap-1">
+        <div class="bar-1 h-1 bg-white transition-transform"></div>
+        <div class="bar-2 h-1 bg-white transition-opacity"></div> 
+        <div class="bar-3 h-1 bg-white transition-transform"></div>
+      </div>
+      <h1>MESSAGER</h1>
+
+     <div class="profile-icon w-10">
+       <img src="../images/profile-icon.jpg" alt="profile icon" class="rounded-full" > 
+      </div>
+      
+    </header>
+    <main class="h-screen w-full flex justify-center items-center text-black">
+      <form class="flex flex-col items-center gap-1 bg-red-50 p-10 rounded-md shadow-[5px_5px_teal] transition-shadow hover:shadow-none">
+        <p>Sign Up Now!</p>
+        <div>
+          <input type="text" name="email" value="" placeholder="Email">
+        </div>
+        <div>
+          <input type="text" name="name" value="" placeholder="Name">
+        </div>
+        <div>
+          <input type="text" name="username" value="" placeholder="Username">
+        </div>
+        <div>
+          <input type="text" name="password" value="" placeholder="Password">
+        </div>
+        <div class="p-1 flex items-center gap-2">
+          <button type="submit" class="signup-button p-1 bg-red-200 hover:bg-red-400 rounded-md shadow-[5px_5px_teal] transition-shadow hover:shadow-none ">Sign Up</button>
+          <span>or</span>
+          <button type="button" class="guest-button p-1 bg-red-200 hover:bg-red-400 rounded-md shadow-[5px_5px_teal] transition-shadow hover:shadow-none ">Continue As Guest</button>  
+        </div>
+      </form> 
+    </main> 
+  </body>
+</html>

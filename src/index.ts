@@ -1,11 +1,11 @@
 
 // Frontend
 
-const form = document.querySelector('form');
+const messageForm = document.querySelector('.message-form');
 
 const messageContainer = document.querySelector('.message-container')
-if (form !== null) {
-  form.addEventListener('submit', (e) => {
+if (messageForm !== null) {
+  messageForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const message = (<HTMLFormElement>e.target).querySelector('[name=\'message\']') as HTMLInputElement
     fetch('/chat/addmessage', {
@@ -23,13 +23,14 @@ if (form !== null) {
         message.value = ""
         updateMessageContainer()
       })
-      .catch(err => {
-        console.error(err)
-      })
+    /*
+    .catch(err => {
+      console.trace(err)
+    })*/
   })
 
 } else {
-  console.error("Form is null")
+  console.error("message form is null")
 }
 
 const updateMessageContainer = () => {

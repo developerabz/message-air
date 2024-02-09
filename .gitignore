@@ -5,4 +5,4 @@ app.js
 /backend-tests/*.test.js
 /backend/*.js
 /src/*.js
-
+messager.sqlite*
