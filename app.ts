@@ -8,6 +8,16 @@ import { createUser } from "./backend/user.js"
 const app = express()
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 //app.use(express.static('src'))
+// TODO: build the portfolio + the server side full stack project
+// TODO: - start adding/updating html pages for:
+// TODO: - login page
+// TODO: - chats
+// TODO: - dashboard
+// TODO: - messaging
+// TODO: - add functionality for navigating between chats
+// TODO: - complete backend tests and functionality
+// TODO: - complete frontend functionality
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 console.log(__dirname)

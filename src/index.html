@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="./tailwind.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico"> 
-    <script src="index.js" defer></script>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="module" src="index.js" defer></script>
   </head>
-  <body class="flex p-5 items-center flex-col bg-black text-white min-h-screen">
+  <body class="flex p-1 md:p-5 items-center flex-col bg-black text-white min-h-screen">
     <header class="flex justify-between w-full p-1 items-center">
       <div class="menu-icon w-8 flex flex-col gap-1">
         <div class="bar-1 h-1 bg-white transition-transform"></div>
@@ -22,6 +23,22 @@
       </div>
       
     </header>
+    <div class="card items-stretch w-full max-w-[1000px] flex-1 bg-primary text-primary-content">
+      <div class="card-body">
+        <h2 class="card-title">Name of user</h2>
+        <div class="message-container flex-1">
+          <div class="chat chat-start">
+            <div class="chat-bubble ">What kind of nonsense is this</div>
+          </div>
+        </div>
+        <form class="card-actions message-form ">
+          <input type="text" name="message" value="" class="input text-white flex-1">
+          <button type="submit" class="btn material-icons">&#xe163;</button>
+
+        </form>
+      </div>
+    </div>
+      <!--
     <main class="bg-red-50 h-96 p-1 md:w-full flex flex-col text-black">
       <section class="users-nav hidden bg-red-500 gap-1">
         <div>Jared</div>
@@ -36,6 +53,7 @@
         </div>
         <button type="submit" class="bg-blue-200 rounded-xl hover:bg-blue-400 hover:text-white p-1" >Submit</button>
       </form>  
-    </main> 
+    </main>
+    -->
   </body>
 </html>

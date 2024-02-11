@@ -2,12 +2,12 @@
 // Frontend
 
 const messageForm = document.querySelector('.message-form');
-
 const messageContainer = document.querySelector('.message-container')
 if (messageForm !== null) {
   messageForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    const message = (<HTMLFormElement>e.target).querySelector('[name=\'message\']') as HTMLInputElement
+    const message = (<HTMLInputElement>document.querySelector('[name=\'message\']'))
+    console.log(message.value)
     fetch('/chat/addmessage', {
       method: "POST",
       headers: {
@@ -34,9 +34,12 @@ if (messageForm !== null) {
 }
 
 const updateMessageContainer = () => {
+  console.log(messageContainer)
   if (messageContainer !== null) {
+    console.log(messageContainer)
     fetch('/posts')
       .then(res => {
+        console.log(messageContainer)
         res.json()
           .then(r => {
             console.log(r)
