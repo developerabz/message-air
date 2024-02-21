@@ -2,6 +2,7 @@ const signUpForm = document.querySelector('form');
 
 const signUpButton = document.querySelector('.signup-button');
 const guestButton = document.querySelector('.guest-button');
+console.log(guestButton)
 
 signUpForm?.addEventListener('submit', (e: Event) => {
   e.preventDefault()
@@ -25,7 +26,9 @@ signUpForm?.addEventListener('submit', (e: Event) => {
     .then(res => res.json())
     .then((res: any) => {
       console.log(res, formData)
-      goToDashboard()
+      createDefaultChatRoom()
+        .then(() => goToDashboard())
+        .catch(err => console.error(err))
 
     })
     .catch(err => {
@@ -35,9 +38,34 @@ signUpForm?.addEventListener('submit', (e: Event) => {
 })
 
 guestButton?.addEventListener('click', () => {
-  goToDashboard()
+  console.log("hello")
+
+  createDefaultChatRoom()
+    .then(() => {
+      goToDashboard()
+    })
+    .catch(err => console.error(err))
 })
 
 const goToDashboard = () => {
-  location.replace('/dashboard')
+  location.replace('/dashboard');
+
+
+}
+
+const createDefaultChatRoom = () => {
+  const users = {
+    authUser: "authguy",
+    otherUser: "otherguy"
+  }
+  console.log(users)
+  return fetch('/chat/create', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(users)
+  });
+
 }

@@ -2,10 +2,12 @@
 import express from "express"
 import path from "path"
 import { fileURLToPath } from "url"
-import { createChat, getChat } from "./backend/chat.js"
+import { addMessage, addMessageToChatroom, createChat, getChat, getLastTenMessages } from "./backend/chat.js"
 import { createUser } from "./backend/user.js"
+
 // Backend
 const app = express()
+let guest_exists = false;
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 //app.use(express.static('src'))
 // TODO: build the portfolio + the server side full stack project
@@ -66,7 +68,11 @@ app.post('/user/create', (req, res) => {
   return
 })
 app.post('/chat/create', (req, res) => {
-  createChat(req.body.users)
+  console.log("work")
+  const { authUser, otherUser } = req.body;
+  console.log(authUser);
+  console.log(otherUser)
+  createChat([authUser, otherUser])
   res.json({ message: "success" })
   return
 })
@@ -79,18 +85,37 @@ app.get('/chat/chatname', (req, res) => {
 
 app.post('/chat/addmessage', (req, res) => {
   console.log("post request")
+  const { message } = req.body;
+  console.log(message);
+  console.log("Okay here is the db right now")
+
 
   // data.message.push(req.body.message)
   // console.log(data)
-  //addMessageToChatroom("chatroom", req.body.message)
+  // test start REMOVE THIS WHEN PROPERLY CREATING USER OR BETTER GUEST
+  if (!guest_exists) {
+    createUser("authguy", "authguy", "auth@guy.com", "authguy");
+    createUser("otherguy", "otherguy", "other@guy.com", "otherguy");
+    guest_exists = true
+  }
+  addMessage("authguy", message, ["authguy", "otherguy"])
+  console.log("success of adding message")
+
+  // test end
+  //addMessageToChatroom(chatname, message)
 
   res.json({ message: "success" })
   return
 })
 
 
-app.get('/posts', (req, res) => {
+app.get('/posts/:id', (req, res) => {
   // res.json(data.message)
+  const chatid = req.params.id;
+
+
+  console.log("getting the posts now for" + chatid);
+  res.json(getLastTenMessages(chatid));
   return
 })
 

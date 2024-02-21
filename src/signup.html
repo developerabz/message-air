@@ -9,7 +9,6 @@
     <script type="module" src="signup.js" defer></script>
   </head>
   <body class="flex p-5 items-center flex-col h-screen">
-    <header class="flex justify-between w-full p-1 items-center">
       <div class="menu-icon w-8 flex flex-col gap-1">
         <div class="bar-1 h-1 bg-white transition-transform"></div>
         <div class="bar-2 h-1 bg-white transition-opacity"></div> 
@@ -34,8 +33,8 @@
             <input name="username" type="text" placeholder="Username" class="input input-bordered text-white w-full max-w-xs" />
             <input name="password" type="password" placeholder="Password" class="input input-bordered text-white w-full max-w-xs" />
             <div class="flex justify-between">
-              <a class="link link-hover" href="/signin" >Sign In instead</a>
-              <a class="link link-hover" href="/dashboard" >Continue as guest</a>    
+              <button type="button" class="link link-hover">Sign In instead</a>
+              <button type="button" class="guest-button link link-hover">Continue as guest</a>    
             </div>
             <button type="submit" class=" btn">Sign Up</button>
           </form>

@@ -1,6 +1,5 @@
-
 // Frontend
-
+console.log("stuff")
 const messageForm = document.querySelector('.message-form');
 const messageContainer = document.querySelector('.message-container')
 if (messageForm !== null) {
@@ -8,7 +7,7 @@ if (messageForm !== null) {
     e.preventDefault()
     const message = (<HTMLInputElement>document.querySelector('[name=\'message\']'))
     console.log(message.value)
-    fetch('/chat/addmessage', {
+    fetch("/chat/addmessage", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -37,20 +36,30 @@ const updateMessageContainer = () => {
   console.log(messageContainer)
   if (messageContainer !== null) {
     console.log(messageContainer)
-    fetch('/posts')
+    fetch(`/posts/${["authguy", "otherguy"].sort().join("-")}`, {
+      method: "GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(res => res.json())
       .then(res => {
-        console.log(messageContainer)
-        res.json()
-          .then(r => {
-            console.log(r)
-            messageContainer.replaceChildren()
-            for (const item of r) {
-              const p = document.createElement('p')
-              p.textContent = item
-              p.className = 'p-2 m-1 bg-green-50 w-min'
-              messageContainer.append(p)
-            }
-          })
+        //console.log(res)
+        messageContainer.replaceChildren()
+
+        for (const item of res) {
+          const chatSide = document.createElement('div')
+          chatSide.className = 'chat chat-end'
+          const p = document.createElement('p')
+          console.log(item)
+
+          p.textContent = item.messageInfo
+          p.className = 'chat-bubble'
+          chatSide.append(p)
+          messageContainer.append(chatSide)
+        }
+        scrollToBottom()
       })
       .catch(err => {
         console.log(err)
@@ -98,4 +107,18 @@ if (menuIcon !== null) {
 }
 
 
+const scrollToBottom = () => {
+  const lastMessageRef = document.querySelectorAll('.chat');
 
+
+  if (!lastMessageRef || lastMessageRef.length == 0) {
+    return
+  }
+
+
+  lastMessageRef[lastMessageRef.length - 1].scrollIntoView({
+    behavior: "smooth",
+    block: "end",
+    inline: "nearest"
+  });
+}
