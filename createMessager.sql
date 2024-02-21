@@ -33,3 +33,9 @@ CREATE TABLE IF NOT EXISTS ChatroomMessages (
   FOREIGN KEY(messageid) REFERENCES Message(messageid)
 );
 
+CREATE TABLE IF NOT EXISTS Session (
+  username TEXT NOT NULL,
+  sessionid TEXT PRIMARY KEY,
+  FOREIGN KEY(username) REFERENCES User(username)
+);
+

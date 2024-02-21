@@ -1,5 +1,6 @@
 import * as crypto from 'crypto'
 import db from '../db.js';
+import { createSession } from './session.js';
 interface User {
   "username": string;
   "name": string;
@@ -18,7 +19,8 @@ const createUser = (username: string, name: string, email: string, password: str
     salt,
     hash
   })
-  return getUser(username)
+
+  return createSession(username);
 }
 const generatePasswordSaltHash = (password: string) => {
   const salt = crypto.randomBytes(128).toString('base64');

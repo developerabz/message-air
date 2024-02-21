@@ -58,12 +58,18 @@ app.get('/dashboard', (req, res) => {
   return
 })
 
+app.get('/403', (req, res) => {
+  res.sendFile(path.join(__dirname, '/src/status-pages/403.html'))
+  return
+})
+
+
 app.post('/user/create', (req, res) => {
-  console.log(req.body)
+  //console.log(req.body)
   const { email, name, username, password } = req.body;
   const user = createUser(username, name, email, password);
   console.log(user)
-  res.json({ message: "success" })
+  res.json(user)
   // createUser()
   return
 })

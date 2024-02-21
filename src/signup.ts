@@ -1,3 +1,7 @@
+if (localStorage.getItem("userSession") && localStorage.getItem("userSession") !== "undefined") {
+  location.replace("/dashboard");
+}
+
 const signUpForm = document.querySelector('form');
 
 const signUpButton = document.querySelector('.signup-button');
@@ -25,7 +29,9 @@ signUpForm?.addEventListener('submit', (e: Event) => {
   })
     .then(res => res.json())
     .then((res: any) => {
-      console.log(res, formData)
+      console.log(res)
+
+      localStorage.setItem("userSession", res.sessionid);
       createDefaultChatRoom()
         .then(() => goToDashboard())
         .catch(err => console.error(err))
