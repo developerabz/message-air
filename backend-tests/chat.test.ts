@@ -7,7 +7,7 @@ beforeEach(() => {
 })
 describe('createChat', () => {
   test('chat creation', () => {
-    const res = { "chatid": "doe,john", "name": "doe,john" }
+    const res = { "chatid": "doe-john", "name": "doe-john" }
     expect(createChat(['john', 'doe']))
       .toStrictEqual(expect.objectContaining(res))
 
@@ -17,7 +17,7 @@ describe('createChat', () => {
 describe('getChat', () => {
   test('get chat by chat id', () => {
     createChat(['john', 'doe'])
-    const res = { "chatid": "doe,john", "name": "doe,john" }
+    const res = { "chatid": "doe-john", "name": "doe-john" }
     expect(getChat(['john', 'doe']))
       .toStrictEqual(expect.objectContaining(res))
   })
